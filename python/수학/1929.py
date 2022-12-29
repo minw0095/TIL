@@ -1,4 +1,4 @@
-# M, N = map(int, input().split())
+M, N = map(int, input().split())
 
 def prime(n):
     check = [True] * n
@@ -11,4 +11,7 @@ def prime(n):
     
     return [i for i in range(2,n) if check[i]==True]
 
-print(prime(20))
+t = sorted(set(prime(N+1)) - set(prime(M)))
+
+for a in list(t):
+    print(a)

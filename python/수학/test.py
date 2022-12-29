@@ -12,4 +12,6 @@ def prime_list(n):
     # 소수 목록 산출
     return [i for i in range(2, n) if sieve[i] == True]
 
-print(prime_list(100))
+s = set([1,2,5,67,4])
+print([True]*5)
+print([True for i in range(5)])

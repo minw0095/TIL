@@ -20,7 +20,35 @@
 #         print(f'{n} = {n-max(real)} + {max(real)}')
 #     else:
 #         print("Goldbach's conjecture is wrong.")
-    
+from sys import stdin
+
+
+
+check = [True] * 1000000
+
+
+for a in range(2,1001):
+    if check[a] :
+        for b in range(a+a, 1000000, a):
+            check[b] = False
+
+
+
+while True:
+    N = int(stdin.readline())
+    if N == 0:
+        break
+    for a in range(3,len(check)):
+        if check[a] and check[N-a]:
+            print(f'{N} = {a} + {N-a}')
+            break
+
+        
+
+
+
+
+
 
     
 
