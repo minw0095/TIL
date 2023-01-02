@@ -14,4 +14,11 @@ def prime_list(n):
 
 s = set([1,2,5,67,4])
 print([True]*5)
-print([True for i in range(5)])
+def p(b):
+    if b == 12:
+        return print('bye')
+    b =b+a
+    p(b)
+a=2
+
+print(type(int('123')))
