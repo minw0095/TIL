@@ -1,11 +1,19 @@
 n = int(input())
+number = 1000000
+num = [0]*(number+1)
+total = [0]*(number+1)
+
+for a in range(1,number+1):
+    b = 1
+    while a * b <= number:
+        num[a*b] += a
+        b += 1
+
+for a in range(1,1000001):
+    total[a] = total[a-1] + num[a]
+
+
 
 for _ in range(n):
     A = int(input())
-
-    result = 0
-    for a in range(1,A+1):
-        cnt = A // a
-        result += a*cnt
-
-    print(result)
+    print(total[A])
