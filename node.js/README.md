@@ -31,3 +31,122 @@ Syntax Errors 중괄호를 빼먹거나 철자를 빼먹는등
 Runtume Errors 
 
 Logical Errors 오류 메세지가 안뜸 
+
+
+
+### express
+
+`npm install --save express`로 설치
+
+use(): 새로운 미들웨어 함수 추가 가능. 상당히 유연함
+
+next():  다음 미들웨어로 이동하게 해줌
+
+```js
+app.use('/',(req, res, next) => {
+    console.log('1');
+    next(); //다음 미들웨어로 이동하게 해줌
+});
+```
+
+body-parser
+
+`npm intall body-parser` 명령어를 통해 설치
+
+``` js
+const bodyParser = require('body-parser')
+```
+
+`body-parser` 모듈을 불러준후
+
+```js
+app.use(bodyParser.urlencoded({extended:false}));
+```
+
+이런 식으로 사용해 주면 된다
+
+
+
+### 라우팅 파일을 다른 파일로 보내는 방법
+
+라우팅한 코드들을 다른 파일로 보내준후 
+
+```js
+const express = require('express');
+
+const router = express.Router();
+```
+
+이런 식으로 Router를 실행
+
+메인 js 파일에서 
+
+```js
+const adminRoutes = require('./routes/admin');
+```
+
+라우터를 불러준다
+
+-> router의 장점:  위에서 정의한 `adminRoutes` 는 미들웨어 함수로 바로 app.use에 사용가능
+
+만약
+
+2개 이상의 router를 불렀을 때 순서를 바꾼다면?
+
+정상 작동:
+
+```js
+const adminRoutes = require('./routes/admin');
+const ShopRoutes = require('./routes/shop');
+
+app.use(ShopRoutes);
+app.use(adminRoutes);
+```
+
+adminRoutes가 작동 안하는 경우:
+
+```js
+const adminRoutes = require('./routes/admin');
+const ShopRoutes = require('./routes/shop');
+
+app.use(adminRoutes);
+app.use(ShopRoutes);
+```
+
+이는 라우터 파일에서
+
+```js
+router.use('/', (req, res, next) => {
+    res.send('<h1>Hello, everyone!</h1>')
+})
+```
+
+use을 사용했기 때문. 이를 `get` `post`를 사용히면 이런 오류가 발생하지 않음
+
+`get` `post`는 경로와 정확히 일치하는 요청만 처리하기 때문에 가능한 것.
+
+
+
+라우터의 파일 경로가 같은 경우
+
+```js
+//admin.js
+router.get('/admin/add-product',(req, res, next) => {
+    console.log('2');
+    res.send('<form action="/add-product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button> </form>');
+});
+
+router.post('/admin/add-product', (req, res, next) => {
+    console.log(req.body);
+    res.redirect('/');
+})
+```
+
+라우터의 /admin을 생략 하고
+
+```js
+//app.js
+app.use('/admin', adminRoutes);
+```
+
+해당 경로를 메인 js에 작성 해주면 된다.
