@@ -12,7 +12,7 @@ for a in range(N):
 
 dx = [0,0,1,-1]
 dy = [1,-1,0,0]
-def dfs():
+def dfs(x,y):
     q = deque()
     q.append((x,y))
     while q:

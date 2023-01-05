@@ -29,6 +29,12 @@ for a in range(N):
         if graph[a][b] == 2:
             bfs(a,b)
 
+for a in range(N):
+    for b in range(M):
+        if graph[a][b] == 0 
+
+
+
 print(graph)
         
 
