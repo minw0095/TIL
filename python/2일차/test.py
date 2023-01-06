@@ -1,2 +1,4 @@
-a = 123
-print(str(a)[::-1])
+a = 2
+
+if not a%2:
+    print(1)

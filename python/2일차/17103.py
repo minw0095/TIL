@@ -1,8 +1,21 @@
-n =int(input())
 
-check = [True]*(n+1)
+check = [True]*1000000
 
-m = int(n ** 0.5)
-for a in range(2,n+1):
+
+for a in range(2,1000+1):
     if check[a]:
-        
+        for b in range(a+a, 1000000, a):
+            check[b] = False
+
+
+
+for _ in range(int(input())):
+    n =int(input())
+
+    cnt =0
+
+    for a in range(2,(n//2)+1):
+        if check[a] and check[n-a]:
+            cnt += 1
+
+    print(cnt)
