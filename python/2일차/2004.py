@@ -1,3 +1,5 @@
+# 2004 조합 0의 개수
+
 a,b = map(int, input().split())
 
 def cnt2(n):
