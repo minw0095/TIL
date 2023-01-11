@@ -150,3 +150,22 @@ app.use('/admin', adminRoutes);
 ```
 
 해당 경로를 메인 js에 작성 해주면 된다.
+
+
+
+
+
+
+
+### 파일을 정적으로 제공하기
+
+```js
+app.use(express.static(path.join(__dirname, 'public')));
+```
+
+이때 'public'을 통해서 자동으로 public 폴더로 포워딩을 해주므로 link에서 따로 public 폴더 경로를 적을 필요가 없다
+
+```html
+<link rel="stylesheet" href="/css/main.css">
+```
+
