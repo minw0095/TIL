@@ -1,3 +1,7 @@
-a = 2
-a-=2
-print(a)
+dic = {
+    'A' : 2,
+    'B' : 3
+}
+t = sorted(dic.keys())
+
+print(t)
