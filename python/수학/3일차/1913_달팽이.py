@@ -5,7 +5,7 @@ M = int(input())
 graph = [[0]*N for _ in range(N)]
 
 T = N
-x = 0
+
 y = 0
 i = 0
 res = N**2
@@ -24,6 +24,7 @@ for _ in range((N//2)+1):
         i+=1
     y +=1
     T-=2
+
 
 for a in graph:
     print(*a)
