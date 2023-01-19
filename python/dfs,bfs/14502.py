@@ -24,14 +24,15 @@ def bfs(x,y):
                 graph[nx][ny] = 2
                 q.append([nx,ny])
 
+def wall(t):
+    if t == 3:
+        bfs()
+
+
 for a in range(N):
     for b in range(M):
         if graph[a][b] == 2:
             bfs(a,b)
-
-for a in range(N):
-    for b in range(M):
-        if graph[a][b] == 0 
 
 
 
