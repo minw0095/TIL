@@ -1,11 +1,11 @@
 import heapq
 
-res = []
-for _ in range(10):
-    t = int(input())
-    heapq.heappush(res, -t)
+# res = []
+# for _ in range(10):
+#     t = int(input())
+#     heapq.heappush(res, -t)
+t = []
+a = [3,2,1]
+heapq.heappush(a,100)
 
-
-for _ in range(10):
-    print(heapq.heappop(res))
-    
+print(a)    

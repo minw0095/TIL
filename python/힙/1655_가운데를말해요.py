@@ -1,17 +1,27 @@
 import heapq
+import sys
 
+input = sys.stdin.readline
 N = int(input())
 
-res = []
+min_h = []
+max_h = []
 
 for _ in range(N):
     t = int(input())
-    heapq.heappush(res, t)
-    p = len(res)
-    if  p % 2 == 1 and p>1:
-        print(f't {min(res[(p//2)+1],res[p//2])}')
+    if len(min_h) == len(max_h):
+        heapq.heappush(max_h, -1*t)
+    else:
+        heapq.heappush(min_h, t)
+    
+    if len(min_h) >= 1 and len(max_h) >= 1 and  max_h[0]*-1 > min_h[0]:
+        a = heapq.heappop(min_h)
+        b = -1 * heapq.heappop(max_h)
 
-    if p % 2 == 0:
-        print(f't {min(res[(p//2)-1],res[p//2])}')
+        heapq.heappush(max_h, -1*a)
+        heapq.heappush(min_h, b)
+    
+    print(max_h[0] * -1)
+
 
 
