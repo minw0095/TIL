@@ -1,7 +1,15 @@
+t = ['a','b','b','c']
 dic = {
-    'A' : 2,
-    'B' : 3
 }
-t = sorted(dic.keys())
 
-print(t)
+for a in t:
+    if not a in dic.keys():
+        dic[a] = 1
+    else:
+        dic[a] += 1
+
+for a in dic:
+    print(a)
+print(dic)
+
+print(min(dic.values()))
