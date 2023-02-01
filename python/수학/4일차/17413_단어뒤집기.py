@@ -1,8 +1,17 @@
-a = input().split()
-a.reverse()
-res = []
-print(a)
-for t in a:
-    res.append(t[::-1])
+a = input()
+print(len(a))
 
-print(*res)
+res = []
+num = []
+i = 0
+
+while i != len(a):
+    if a[i] == '<':
+        while a[i] != '>':
+            i += 1
+    
+    else:
+        
+
+
+print(a[1::-1])
