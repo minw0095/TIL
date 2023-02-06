@@ -4,20 +4,18 @@ input = sys.stdin.readline
 N = int(input())
 
 top = list(map(int, input().split()))
+stack = []
+res = [0] *N
+for a in range(N):
+    while stack:
+        if stack[-1][1] > top[a]:
+            res[a] = stack[-1][0] +1
+            break
+        else:
+            stack.pop()
 
-res = [0]
+    stack.append([a,top[a]])
 
-# for a in range(1,len(top)):
-#     i = a -1
-#     while i > 0:
-#         if top[a] <= top[i]:
-#             res.append(i+1)
-#             break
-#         i -= 1
-
-#     if i == 0:
-#         res.append(0)
-    
 
 
 print(*res)
