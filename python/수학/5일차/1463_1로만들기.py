@@ -10,10 +10,11 @@ for a in range(2,n+1):
     if a % 3 == 0:
         if cnt > dp[a//3]+1:
             cnt = dp[a//3]+1
-    
+        
+
     dp[a] = cnt
 
-print(dp[n])
+print(dp)
 
 
 
