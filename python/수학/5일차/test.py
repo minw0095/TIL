@@ -1,5 +1,1 @@
-n,m = map(int, input().split())
-
-N = int(input())
-
-
+print(min(1,1))
