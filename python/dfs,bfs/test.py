@@ -1,5 +1,7 @@
-n= int(input())
+from collections import deque
 
-g = [list(input()) for _ in range(n)]
+a= [1,2,3]
 
-print(g)
+a = deque(a)
+
+print(a)
