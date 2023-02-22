@@ -26,12 +26,12 @@ def bfs(x,y):
             nx = x + dx[a]
             ny = y + dy[a]
 
-            if 0<=nx<N and 0<=ny< N:
+            if 0<=nx<N and 0<=ny< N: # 섬 구별용
                 if graph[nx][ny] == 1:
                     graph[nx][ny] = 2
                     q.append((nx,ny))
 
-                if graph[x][y] == 2 and graph[nx][ny] == 0:
+                if graph[x][y] == 2 and graph[nx][ny] == 0: # 외각 부분들 t덱큐에 넣어주기
                     t.append((x,y))
 
 # 다리만들기 bfs
@@ -64,6 +64,7 @@ for a in range(N):
                 pprint(graph)
                 graph = [p[:] for p in graph2]
 
+
 # for a in range(N):
 #     for b in range(N):
 #         if graph[a][b] == 1:
@@ -73,5 +74,5 @@ for a in range(N):
 #                 bfs2()
 #                 graph = copy.deepcopy(graph2)
 #                 break
-print(res)
+
 print(min(res)-2)
