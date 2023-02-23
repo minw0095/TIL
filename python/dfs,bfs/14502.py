@@ -34,7 +34,7 @@ for a in range(N):
         if graph[a][b] == 2:
             bfs(a,b)
 
-
+for
 
 print(graph)
         
