@@ -19,13 +19,13 @@ def solution(numbers, target):
 
         numbers2 = copy.deepcopy(numbers)
 
-        if cnt == 4:
+        if cnt == target:
              if numbers2 not in res:
-                 res.append(numbers2)
+                res.append(numbers2)
         t += 1
         
 
 
-solution(solution,target)
-print(len(res))
+solution([1,1,1,1,1],3)
+print(len(res),res)
 
