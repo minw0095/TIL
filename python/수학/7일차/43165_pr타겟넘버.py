@@ -1,31 +1,22 @@
-import copy
-res = []
+from collections import deque
+
 def solution(numbers, target):
+    answer = 0
+    q = deque()
+    cnt = 0
+    q.append((numbers[0],cnt))
+    q.append((-numbers[0],cnt))
 
-    t = 1
-    while t != len(numbers):
-        cnt = 0
-        for a in range(len(numbers)):
-            if cnt < target:
-                if numbers[a] < 0:
-                    cnt -= numbers[a]
-                    numbers[a] = -numbers[a]
-                else:
-                    cnt += numbers[a]
+    while q:
+        a,b = q.popleft()
+        b += 1
+        if b < len(numbers):
+            q.append((a+numbers[b],b))
+            q.append((a-numbers[b],b))
+        else:
+            if a == target:
+                answer += 1
 
-            else:
-                cnt -= numbers[a]
-                numbers[a] = -numbers[a]
+    return answer
 
-        numbers2 = copy.deepcopy(numbers)
-
-        if cnt == target:
-             if numbers2 not in res:
-                res.append(numbers2)
-        t += 1
-        
-
-
-solution([1,1,1,1,1],3)
-print(len(res),res)
 

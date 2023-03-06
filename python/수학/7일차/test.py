@@ -1,16 +1,8 @@
-numbers = [4,1,2,1]
-t = [[4,1,2,1]]
-if 1 not in t:
-    print('ss')
+a = [1,2,3]
+b = [5,6,7]
 
-cnt = 0
-res= []
-for a in range(len(numbers)):
-    if cnt+numbers[a]<= 4:
-        cnt += numbers[a]
-    else:
-        cnt -= numbers[a]
-        numbers[a] = -numbers[a]
-res.append(numbers)
+from collections import deque
 
-print(numbers,cnt)
+c = deque(a) + deque(b)
+
+print(c)

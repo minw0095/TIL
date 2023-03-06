@@ -1,18 +1,29 @@
+
+
 N = int(input())
 
-# for t in range(N):
-#     input()
-res = []
-cnt = 0
-t = list(input())
-for a in t:
-    if a == '<':
-        if cnt > 0:
-            cnt -= 1
+for _ in range(N):
+    t = list(input())
+    res = []
+    res2 = []
+    cnt = 0
+    for a in t:
+        if a == '<':
+            if res:
+                res2.append(res.pop())
+        
+        elif a == '>':
+            if res2:
+                res.append(res2.pop())
+
+        elif a == '-':
+            if res:
+                res.pop()
+            
+
+        else:
+            res.append(a)
+            
+        
     
-    elif a == '>':
-        if 
-
-
-    else:
-        res.append(1)
+    print(''.join(res)+''.join(reversed(res2)))
