@@ -1,43 +1,21 @@
 n = input()
-t = input()
+t = list(input())
 
 stack = []
 res = []
 
-# for a in n:
-#     if a in t:
-#         stack.append(a)
-#     else:
-#         res.append(a)
+p = 0
+for a in range(len(n)):
+    res.append(n[a])
 
-#     while len(stack)>= len(t):
-p=0
-for a in n:
-    res.append(a)
-
-    if a == t[p]:
-        stack.append(a)
-        p += 1
-    elif a !=t[p] and t[0]:
-        stack.append(a)
-        p = 1
-    elif a !=t[p]:
-        p = 0
-
-
-    if p == len(t):
-        for b in range(len(t)):
-            res.pop()
-            stack.pop()
-        res = res+stack
-        p = 0
-
-print(res)
+    if n[a] == t[-1]:
+        if res[a-len(t)+1-p:a+1-p] == t:
+            for _ in range(len(t)):
+                res.pop()
+                p +=1
         
 
-    
-
-            
-        
-        
-
+if res:
+    print(''.join(res))
+else:
+    print('FRULA')

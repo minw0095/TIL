@@ -1,6 +1,5 @@
-a = [2,2,3,3]
-b= [2,3]
-a= set(a)
-b= set(b)
+n = 6
 
-print(a-b)
+graph = [[] for _ in range(n)]
+
+print(graph)
