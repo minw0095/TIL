@@ -51,6 +51,8 @@ app.use('/',(req, res, next) => {
 
 body-parser
 
+req를 분석해주는 역할을 해준다.
+
 `npm intall body-parser` 명령어를 통해 설치
 
 ``` js
@@ -64,6 +66,37 @@ app.use(bodyParser.urlencoded({extended:false}));
 ```
 
 이런 식으로 사용해 주면 된다
+
+
+
+### 미들웨어
+
+#### 미들웨어는 순서가 매우 중요하다!!
+
+express에서 정의하는 use 메서드를 사용
+
+다음 미들웨어를 접근할려면 next()를 사용해야함
+
+하지만 send()를 사용할 시 next()를 호출하지 않는 것이 좋음.(다른 응답 관련 코드를 실행하면 안되기 때문에 하나 이상의 응답을 보내려 하면 오류가 발생함.)
+
+```js
+app.use((req, res, next) => {
+    console.log('in the middleware!');
+    next();
+});
+
+app.use((req, res, next) => {
+    console.log('in the middleware!');
+});
+```
+
+GET 요청만 받고 싶을때
+
+```javascript
+app.use() 대신 app.get()
+```
+
+
 
 
 
@@ -157,7 +190,7 @@ app.use('/admin', adminRoutes);
 
 
 
-### 파일을 정적으로 제공하기
+### 파일을 정적으로 제공하기(파일 시스템으로 직접 포워딩하기)
 
 ```js
 app.use(express.static(path.join(__dirname, 'public')));
@@ -167,5 +200,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 ```html
 <link rel="stylesheet" href="/css/main.css">
+```
+
+
+
+### 동적컨텐츠
+
+ejs, pug, handlebars
+
+```bash
+npm install --save ejs pug express-handlebars
 ```
 
