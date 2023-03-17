@@ -1,7 +1,3 @@
-from collections import deque
+a = [[1,1],[2,2]]
 
-a= [1,2,3]
-
-a = deque(a)
-
-print(a)
+print(a[0][1])

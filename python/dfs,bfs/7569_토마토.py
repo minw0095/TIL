@@ -31,7 +31,7 @@ for a in range(H):
         for c in range(N):
             if graph[a][b][c] == 1:
                 q.append((a,b,c))
-
+pprint(graph)
 bfs()
 
 
