@@ -1,22 +1,37 @@
 n = input()
 
 stack = []
-stack2 =[]
-res = []
+
+res = ''
 
 for a in n:
-    res.append(a)
-    if res[-1] == '(' or res[-1] == ')':
-        res.pop()
-    elif res[-1] == '/' or res[-1] == '*' or res[-1] == '+' or res[-1] == '-':
-        stack.append(res.pop())
+    if a.isalpha():
+        res += a
     
-    
-    if stack:
-        if stack[-1] == '/' or stack[-1] == '*':
-            res.append(stack.pop())
-        elif a == n[-1]:
-            while stack:
-                res.append(stack.pop())
+    else:
+        if a == '(':
+          stack.append(a)
 
-print(res,stack)
+        elif a == '*' or a == '/':
+            while stack and (stack[-1] == '*' or stack[-1] == '/'):
+                res += stack.pop()
+            stack.append(a)
+
+        elif a == '+' or a == '-':
+            while stack and stack[-1] != '(':
+                res += stack.pop()
+            stack.append(a)
+        
+        elif a == ')':
+            while stack and stack[-1] != '(':
+                res += stack.pop()
+            stack.pop()
+
+while stack:
+    res += stack.pop()
+
+print(res)
+
+
+      
+   
