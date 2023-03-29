@@ -36,7 +36,7 @@ for _ in range(T):
         check[y] += 1
 
     end = int(input())
-    print(top_sort(),1)
+    print(top_sort(),10)
 
 
             
