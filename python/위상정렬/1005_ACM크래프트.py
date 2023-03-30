@@ -11,10 +11,8 @@ def top_sort():
             
 
     while q:
-        t,p = q.popleft()
-        res += p
-        if t == end:
-            return res
+        t = q.popleft()
+
 
         for a in graph[t]:
             check[a] -= 1
@@ -26,9 +24,9 @@ for _ in range(T):
     n,m = map(int, input().split())
     graph = [[] for _ in range(n+1)]
     check = [0] * (n+1)
+    dp = [0] * (n+1)
 
-    time = [0]
-    time += list(map(int, input().split()))
+    time = [0] + list(map(int, input().split()))
     print(time)
     for _ in range(m):
         x,y = map(int, input().split())
