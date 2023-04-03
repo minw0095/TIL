@@ -1,1 +1,2 @@
-print([0] +list(map(int, input().split())))
+a= [1,2,3]
+print(a[:-1])
