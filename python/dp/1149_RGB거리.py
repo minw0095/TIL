@@ -1,14 +1,15 @@
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-dp = [0]*(n+1)
-num = [0]*(n+1)
-for a in range(len(list(map(int, input().split())))):
+dp = []
 
-color = [0] * (n+1)
-print(dp)
+for a in range(n):
+    dp.append(list(map(int, input().split())))
 
-for a in range(n-1):
-    r,g,b = map(int, input().split())
-    t = min(r,g,b)
-    color = [[1,r], [2,g], [3,b]]
+for a in range(1,n):
+    dp[a][0] = min(dp[a-1][1], dp[a-1][2]) +  dp[a][0]
+    dp[a][1] = min(dp[a-1][0], dp[a-1][2]) +  dp[a][1]
+    dp[a][2] = min(dp[a-1][0], dp[a-1][1]) +  dp[a][2]
 
-    for a in num
+print(min(dp[n-1]))
