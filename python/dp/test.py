@@ -1,4 +1,6 @@
-r = 12
-a = [1,r]
+from collections import Counter
 
-print(a[-1])
+n = int(input())
+nums = list(map(int, input().split()))
+cnt = Counter(nums)
+print(cnt[1])
