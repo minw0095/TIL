@@ -1,21 +1,26 @@
+import sys
+input = sys.stdin.readline
+
 n, r, c = map(int, input().split())
+res = 0
+while n != 0:
+    n -= 1
+    t = 2 ** n
 
-graph = [[0]*(2**n) for _ in range(2**n)]
-cnt = 0
-print(graph)
-def Z(x, y, t):
-    global cnt
-    cnt += 1
-    graph[x][y] = cnt
-    cnt += 1
-    graph[x][y+1] = cnt
-    cnt += 1
-    graph[x+1][y] = cnt
-    cnt += 1
-    graph[x+1][y+1] = cnt
-    t *= 2
+    if r < t and c < t:
+        res += 0
+    
+    elif r < t and c >= t:
+        res += t * t
+        c -= t
+    
+    elif r >= t and c < t:
+        res += t * t * 2
+        r -= t
+    
+    else:
+        res += t * t * 3
+        r -= t
+        c -= t
 
-    if t != 
-
-Z(0,0,0)
-print(graph)
+print(res)
