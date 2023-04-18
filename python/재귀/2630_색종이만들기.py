@@ -20,6 +20,8 @@ def cut(x,y,n):
     else:
         blue.append(1)
 
+    
+
 cut(0,0,n)
 print(len(white))
 print(len(blue))
