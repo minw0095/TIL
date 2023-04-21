@@ -9,10 +9,9 @@ def cut(x,y,n):
     for a in range(x, x+n):
         for b in range(y, y+n):
             if color != graph[a][b]:
-                cut(x, y, n//3)
-                cut(x, y+n//3, n//3)
-                cut(x+n//3, y, n//3)
-                cut(x+n//3, y+n//3, n//3)
+                for i in range(3):
+                    for j in range(3):
+                        cut(x+i*n//3, y+j*n//3, n//3)
                 return
     
     if color == -1:
