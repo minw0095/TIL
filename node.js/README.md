@@ -212,3 +212,86 @@ ejs, pug, handlebars
 npm install --save ejs pug express-handlebars
 ```
 
+view에 대한 기본설정은 메인 디렉토리와 views폴더로 돼있다. 변경하고 싶다면
+
+```javascript
+app.set('views', 'templates')
+```
+
+동적 컨텐츠는 send()방식이 아닌 render()를 통해 송신
+
+```javascript
+router.get('/', (req, res, next) => {
+    const products = adminData.products
+    res.render('shop', {prods: products});
+});
+```
+
+이때 딕셔너리 형태인 이유는 이름의 혼동을 피하기위해
+
+
+
+* handler 사용방법
+
+```javascript
+//app.js
+const expressHbs  = require('express-handlebars')
+app.engine('handlebars', expressHbs()); //('전해줄이름', 무슨툴인지)
+app.set('view engine', 'handlebars');	//위에서 정의한 handlebars를 넘겨줘서
+```
+
+--> 이렇게 했더니 expressHbs() is not function 이라는 오류발생
+
+```bash
+//해결
+npm install --save express-handlebars@3.0
+```
+
+handlebars의 버전 문제인듯 싶다.
+
+hbs에서 조건문을 사용할려면
+
+```javascript
+//shop.js
+router.get('/', (req, res, next) => {
+    const products = adminData.products
+    res.render('shop', {prods:products, pageTitle: 'Shop', path: '/', hasProducts: products.length > 0});
+});
+```
+
+shop.js에서 논리연산에 해당하는 값을 전달해줘야한다.
+
+```handlebars
+{{# if prods.length}} {{/if}} --> (X)
+{{# if hasProducts}} {{/if}} --> (o)
+```
+
+루프를 만들고 싶다면
+
+```handlebars
+ {{#each prods}}
+ {{ this.title }}
+ {{/else}}
+```
+
+
+
+* ejs
+
+ejs는 레이아웃을 제공하지 않는다.
+
+ejs는 태그를 다음과 같은 형식으로 나타낸다.
+
+```ejs
+<%  %>
+```
+
+ejs는 Vanilla javascript 코드를 쓸수 있는 장점이 있음
+
+```ejs
+<% if (prods.length > 0) { %>
+<div class="grid">
+    ...
+<% } %>
+```
+
