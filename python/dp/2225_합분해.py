@@ -11,3 +11,5 @@ for a in range(2,201):
     dp[a][1] = a
     for b in range(2,201):
         dp[a][b] = (dp[a][b-1] + dp[a-1][b])% 1000000000
+
+print(dp[k][n])
