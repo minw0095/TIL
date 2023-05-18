@@ -1,20 +1,20 @@
+
+
 w,h = map(int, input().split())
 x,y = map(int, input().split())
 t = int(input())
-a,b = 1,1
 
-for _ in range(t):
-    if x == 0:
-        a = -a
-    if x == w:
-        a = -a
-    if y == 0:
-        b = -b
-    if y == h:
-        b = -b
+a = (t+x) // w
+b = (t+y) // h
 
-    x += a
-    y += b
+if a % 2 == 0 :
+    n = (x+t) % w
+else:
+    n =  w - (x+t) % w
 
-print(x,y)
-    
+if b % 2 == 0:
+    m = (y+t) % h
+else:
+    m = h - (y+t) % h
+
+print(n,m)
