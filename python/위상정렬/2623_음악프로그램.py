@@ -1,5 +1,10 @@
-a,b,c = 1,2,3
+from collections import deque
 
-print([(a,b,c)])
+n,k = map(int, input().split())
 
-print(list((a,b,c)))
+
+def top_sort():
+    for _ in range(k):
+        singer = list(map(int, input().split()))
+        
+
