@@ -4,9 +4,11 @@ n, l, r = map(int, input().split())
 
 graph = [list(map(int, input().split())) for _ in range(n)]
 visited = [[-1]*n for _ in range(n)]
+check = []
 t= 1
 
 def bfs(i,j):
+    global res
     cnt = 1
     visited[i][j] = 0
     total = graph[i][j]
@@ -30,16 +32,22 @@ def bfs(i,j):
                         total += graph[dx][dy]
                         cnt += 1
                         visited[dx][dy] = 0
+                        check.append([dx,dy])
         
         res = total // cnt
     
-    print(res,cnt)
+    print(res,cnt,check)
 
-for a in range(n):
-    for b in  range(n):
-        if visited[a][b] == -1:
-            bfs(a,b)
-            
+while n:
+    bfs(0,0)
+    print(res)
+    for a in check:
+        [x,y] = a
+        visited[x][y] = -1
+        graph[x][y] = res
 
-print(t)
-        
+    break
+
+print(graph)
+
+
