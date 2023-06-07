@@ -25,6 +25,7 @@ def bfs(i,j):
             dx = x +nx[a]
             dy = y +ny[a]
 
+            check.append([x,y])
             if 0 <= dx < n and 0 <= dy < n:
                 if l <= abs(graph[x][y] - graph[dx][dy]) <= r:
                     if visited[dx][dy] == -1:
@@ -32,7 +33,6 @@ def bfs(i,j):
                         total += graph[dx][dy]
                         cnt += 1
                         visited[dx][dy] = 0
-                        check.append([dx,dy])
         
         res = total // cnt
     
