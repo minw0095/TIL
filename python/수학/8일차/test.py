@@ -1,5 +1,6 @@
-n = 6
+a,b = 1,3
 
-graph = [[] for _ in range(n)]
+t,p = 1,3
 
-print(graph)
+if [a,b] == [t,p]:
+    print('!')

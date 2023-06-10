@@ -1,6 +1,7 @@
 import sys
 input = sys.stdin.readline
 from collections import deque
+from pprint import pprint
 import copy
 
 N,M = map(int, input().split())
@@ -38,6 +39,9 @@ def bfs():
         cnt += graph2[a].count(0)
 
     answer = max(answer, cnt)
+    if cnt == answer:
+        pp = graph2
+        pprint(graph2)
 
 def wall(t):
     if t == 3:
