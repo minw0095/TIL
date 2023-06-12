@@ -21,6 +21,6 @@ def solution(maps):
                 q.append((nx,ny))
              
             if x == n-1 and y ==m-1:
-                return print(maps[x][y])
-    return print(-1)
+                return maps[x][y]
+    return -1 
 
