@@ -45,7 +45,7 @@ while n:
         [x,y] = a
         visited[x][y] = -1
         graph[x][y] = res
-
+        visited[0]
     break
 
 print(graph)
