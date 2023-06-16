@@ -1,5 +1,6 @@
 n = list(input().split())
 t = 0
+new = []
 
 for a in len(n):
     if n[a] == "LONG":
