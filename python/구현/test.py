@@ -5,3 +5,5 @@ for a in range(4):
         continue
 
     print(a)
+    
+    test = 1
