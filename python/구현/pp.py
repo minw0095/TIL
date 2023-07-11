@@ -17,30 +17,7 @@ def solution(today, terms, privacies):
         else:
             ex_mon += int(term_mon)
         
-        if ex_day == 0:
-            ex_mon -= 1
-            ex_day = 28
-        else:
-            ex_day -= 1
-        
-        if ex_year == year:
-            if ex_mon < mon:
-                answer.append(number)
-                
-            elif ex_mon == mon:
-                if ex_day < day:
-                    answer.append(number)
-            
-            else:
-                pass
-        
-        elif ex_mon < year:
-            answer.append(number)
-        
-        else:
-            pass
-        
-        number += 1
+
         
         
             
