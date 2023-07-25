@@ -21,4 +21,5 @@ for s in strn:
             stack.pop()
 while stack :
     res+=stack.pop()
+    
 print(res)
